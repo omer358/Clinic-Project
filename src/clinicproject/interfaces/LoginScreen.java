@@ -3,19 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinicproject;
+package clinicproject.interfaces;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author O.M.O
  */
 public class LoginScreen extends javax.swing.JFrame {
+    // variable for test the login Screen
+    private String defultUserName = "omer358";
+    private String defultPassward = "omermaki";
+
+    
 
     /**
      * Creates new form LoginScreen
      */
     public LoginScreen() {
         initComponents();
+        //set the fram to maximum size
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,20 +38,26 @@ public class LoginScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLoginButton = new javax.swing.JButton();
-        jUNField = new javax.swing.JTextField();
-        jPField = new javax.swing.JTextField();
+        userNameTextF = new javax.swing.JTextField();
         jUserName = new javax.swing.JLabel();
         jPassword = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         jLoginButton.setText("Login");
-
-        jUNField.addActionListener(new java.awt.event.ActionListener() {
+        jLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jUNFieldActionPerformed(evt);
+                jLoginButtonActionPerformed(evt);
+            }
+        });
+
+        userNameTextF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameTextFActionPerformed(evt);
             }
         });
 
@@ -83,13 +99,13 @@ public class LoginScreen extends javax.swing.JFrame {
                             .addComponent(jPassword))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPField, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(jUNField)))
+                            .addComponent(userNameTextF, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(jPasswordField1)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,12 +114,12 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jUNField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPassword, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                    .addComponent(userNameTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPassword)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -111,9 +127,25 @@ public class LoginScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jUNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUNFieldActionPerformed
+    private void userNameTextFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTextFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jUNFieldActionPerformed
+    }//GEN-LAST:event_userNameTextFActionPerformed
+
+    private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
+        //get the texts from the fields
+        String userName = userNameTextF.getText();
+        String password = jPasswordField1.getText();
+        
+        //check if the user has an authorized acess to the application 
+        if (userName.equals(defultUserName)&&password.equals(defultPassward)) {
+            MainScreen main = new MainScreen(userName);
+            main.setVisible(true);
+            this.setVisible(false);
+        }else{
+            //if not show Message dialog to the user
+            JOptionPane.showMessageDialog(null, "userName or password is wrong!","Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jLoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,10 +185,10 @@ public class LoginScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jLoginButton;
-    private javax.swing.JTextField jPField;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jPassword;
-    private javax.swing.JTextField jUNField;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel jUserName;
+    private javax.swing.JTextField userNameTextF;
     // End of variables declaration//GEN-END:variables
 }
