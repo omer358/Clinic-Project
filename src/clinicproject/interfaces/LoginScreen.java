@@ -137,14 +137,14 @@ public class LoginScreen extends javax.swing.JFrame {
         String password = jPasswordField1.getText();
         
         //check if the user has an authorized acess to the application 
-        if (userName.equals(defultUserName)&&password.equals(defultPassward)) {
+//        if (userName.equals(defultUserName)&&password.equals(defultPassward)) {
             MainScreen main = new MainScreen(userName);
             main.setVisible(true);
             this.setVisible(false);
-        }else{
-            //if not show Message dialog to the user
-            JOptionPane.showMessageDialog(null, "userName or password is wrong!","Error", JOptionPane.ERROR_MESSAGE);
-        }
+//        }else{
+//            //if not show Message dialog to the user
+//            JOptionPane.showMessageDialog(null, "userName or password is wrong!","Error", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
     /**
