@@ -25,6 +25,8 @@ public class MainScreen extends javax.swing.JFrame {
     }
     public MainScreen(String userName){
         initComponents();
+        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         logenedUser = userName;
     }
