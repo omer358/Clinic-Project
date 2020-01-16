@@ -15,6 +15,11 @@ import javax.swing.JFrame;
 public class MeetDocter extends javax.swing.JFrame {
     
     private String pPName;
+    private String pSymptoms;
+    private String pDiagnose;
+    private String pDecision;
+    private String pDecisions;
+    
         
     /**
      * Creates new form MeetDocter
@@ -22,6 +27,7 @@ public class MeetDocter extends javax.swing.JFrame {
     public MeetDocter() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -42,7 +48,7 @@ public class MeetDocter extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_Diagnose = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        tv_diseaseSymptoms = new javax.swing.JTextField();
+        tf_diseaseSymptoms = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tv_decisions = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -51,6 +57,8 @@ public class MeetDocter extends javax.swing.JFrame {
         jb_save = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         tb_send = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setTitle("Meet a Doctor");
         setResizable(false);
@@ -73,9 +81,9 @@ public class MeetDocter extends javax.swing.JFrame {
 
         jLabel6.setText("Disease symptoms");
 
-        tv_diseaseSymptoms.addActionListener(new java.awt.event.ActionListener() {
+        tf_diseaseSymptoms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tv_diseaseSymptomsActionPerformed(evt);
+                tf_diseaseSymptomsActionPerformed(evt);
             }
         });
 
@@ -85,7 +93,7 @@ public class MeetDocter extends javax.swing.JFrame {
 
         jLabel8.setText("Doctor Name:");
 
-        jb_save.setText("Save");
+        jb_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_done_black_24dp.png"))); // NOI18N
         jb_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_saveActionPerformed(evt);
@@ -100,6 +108,10 @@ public class MeetDocter extends javax.swing.JFrame {
                 tb_sendActionPerformed(evt);
             }
         });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_chevron_right_black_24dp.png"))); // NOI18N
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_chevron_left_black_24dp.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,23 +137,29 @@ public class MeetDocter extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jt_pAge, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tv_diseaseSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_diseaseSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jt_pname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jb_save)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(92, 92, 92)
-                                        .addComponent(tv_decisions, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(231, 231, 231)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(jButton2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jb_save))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addGap(92, 92, 92)
+                                            .addComponent(tv_decisions, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(tb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(231, 231, 231)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))))
                 .addGap(38, 38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,23 +179,28 @@ public class MeetDocter extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tv_diseaseSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_diseaseSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(tv_decisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(jLabel8)
-                .addGap(27, 27, 27)
-                .addComponent(jb_save)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(tv_decisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel8)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jb_save)
+                            .addComponent(jButton2)))
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -188,12 +211,15 @@ public class MeetDocter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jt_pAgeActionPerformed
 
-    private void tv_diseaseSymptomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tv_diseaseSymptomsActionPerformed
+    private void tf_diseaseSymptomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_diseaseSymptomsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tv_diseaseSymptomsActionPerformed
+    }//GEN-LAST:event_tf_diseaseSymptomsActionPerformed
 
     private void jb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_saveActionPerformed
         // TODO add your handling code here:
+        pSymptoms =tf_diseaseSymptoms.getText().trim();
+        pDiagnose = ta_Diagnose.getText().trim();
+        
     }//GEN-LAST:event_jb_saveActionPerformed
 
     private void tb_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_sendActionPerformed
@@ -237,6 +263,8 @@ public class MeetDocter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -253,7 +281,7 @@ public class MeetDocter extends javax.swing.JFrame {
     private javax.swing.JTextField jt_pname;
     private javax.swing.JTextArea ta_Diagnose;
     private javax.swing.JButton tb_send;
+    private javax.swing.JTextField tf_diseaseSymptoms;
     private javax.swing.JTextField tv_decisions;
-    private javax.swing.JTextField tv_diseaseSymptoms;
     // End of variables declaration//GEN-END:variables
 }

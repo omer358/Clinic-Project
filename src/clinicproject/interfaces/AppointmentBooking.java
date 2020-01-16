@@ -51,6 +51,7 @@ public class AppointmentBooking extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Appointment");
 
         jLabel1.setText("Name:");
 
@@ -165,6 +166,7 @@ public class AppointmentBooking extends javax.swing.JFrame {
        System.out.print("hello world");
        System.out.println(gender);
         JOptionPane.showMessageDialog(null,name+"\n"+age+"\n"+address+"\n"+phone+"\n"+gender,"result",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

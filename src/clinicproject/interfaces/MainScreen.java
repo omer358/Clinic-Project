@@ -29,6 +29,8 @@ public class MainScreen extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         logenedUser = userName;
+        jlab_userName.setText(userName);
+        
     }
 
     /**
@@ -56,12 +58,14 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jlab_userName = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Screen");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jB_appoint.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jB_appoint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_edit_black_36dp.png"))); // NOI18N
@@ -75,7 +79,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jB_meeting.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jB_meeting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_control_point_black_36dp.png"))); // NOI18N
-        jB_meeting.setText("Meet a Doctor");
+        jB_meeting.setText("Doctor");
         jB_meeting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_meetingActionPerformed(evt);
@@ -99,13 +103,13 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel1.add(jButton1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Procedures");
+        jLabel2.setText("Procedures:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Add:");
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton4.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_extension_black_36dp.png"))); // NOI18N
@@ -138,10 +142,10 @@ public class MainScreen extends javax.swing.JFrame {
         jPanel2.add(jButton6);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Queries");
+        jLabel5.setText("Queries:");
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton7.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_filter_tilt_shift_black_36dp.png"))); // NOI18N
@@ -151,6 +155,16 @@ public class MainScreen extends javax.swing.JFrame {
         jButton8.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jButton8.setText("Checking");
         jPanel3.add(jButton8);
+
+        jlab_userName.setFont(new java.awt.Font("Cantarell", 1, 14)); // NOI18N
+        jlab_userName.setText("UserName");
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/icons8-sign-out-24.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,17 +187,29 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlab_userName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jlab_userName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,12 +228,6 @@ public class MainScreen extends javax.swing.JFrame {
         AppointmentBooking appointmentBooking = new AppointmentBooking();
         appointmentBooking.setVisible(true);
     }//GEN-LAST:event_jB_appointActionPerformed
-
-    private void jB_meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_meetingActionPerformed
-        // TODO add your handling code here:
-        MeetDocter mDoctor = new MeetDocter();
-        mDoctor.setVisible(true);
-    }//GEN-LAST:event_jB_meetingActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -232,6 +252,19 @@ public class MainScreen extends javax.swing.JFrame {
         AddUser user = new AddUser();
         user.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jB_meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_meetingActionPerformed
+        // TODO add your handling code here:
+        MeetDocter mDoctor = new MeetDocter();
+        mDoctor.setVisible(true);
+    }//GEN-LAST:event_jB_meetingActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        LoginScreen login = new LoginScreen();
+        login.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,6 +306,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton jB_counters;
     private javax.swing.JButton jB_meeting;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -285,5 +319,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jlab_userName;
     // End of variables declaration//GEN-END:variables
 }
