@@ -63,7 +63,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                                          <Component id="tv_decisions" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="tv_dec" min="-2" pref="90" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="tb_send" min="-2" pref="46" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
@@ -119,7 +119,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tv_decisions" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_dec" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tb_send" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
@@ -194,7 +194,7 @@
         <Property name="text" type="java.lang.String" value="decisions"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tv_decisions">
+    <Component class="javax.swing.JTextField" name="tv_dec">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -203,7 +203,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="jl_decsions">
+        <Component class="javax.swing.JList" name="jl_decs">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>

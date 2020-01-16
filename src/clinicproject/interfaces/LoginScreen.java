@@ -5,8 +5,9 @@
  */
 package clinicproject.interfaces;
 
-import javax.swing.JFrame;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import modles.DB;
 
 /**
  *
@@ -16,6 +17,7 @@ public class LoginScreen extends javax.swing.JFrame {
     // variable for test the login Screen
     private String defultUserName = "omer358";
     private String defultPassward = "omermaki";
+    
 
     
 
@@ -135,16 +137,34 @@ public class LoginScreen extends javax.swing.JFrame {
         //get the texts from the fields
         String userName = userNameTextF.getText();
         String password = jPasswordField1.getText();
-        
-        //check if the user has an authorized acess to the application 
-//        if (userName.equals(defultUserName)&&password.equals(defultPassward)) {
-            MainScreen main = new MainScreen(userName);
-            main.setVisible(true);
-            this.setVisible(false);
-//        }else{
-//            //if not show Message dialog to the user
-//            JOptionPane.showMessageDialog(null, "userName or password is wrong!","Error", JOptionPane.ERROR_MESSAGE);
-//        }
+        String query = "SELECT * FROM `users`";
+        DB log = new DB();
+        try{
+            ResultSet rs = log.get(query);
+            int ali = 0;
+            
+            while(rs.next()){
+             
+              if(rs.getString("username").equals(userName) &&rs.getString("password").equals(password) ){
+                ali = 1;
+                JOptionPane.showMessageDialog(null,"Welcome : "+rs.getString("name"), "you are loged in ", JOptionPane.INFORMATION_MESSAGE);    
+                MainScreen main = new MainScreen(rs.getString("username"));
+                this.setVisible(false);
+                main.setVisible(true);
+                
+              }
+            }
+              
+            if (ali == 0){
+                    JOptionPane.showMessageDialog(null, "userName or password is wrong!","Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "there is a problem while loging into the account","Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+      
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
     /**

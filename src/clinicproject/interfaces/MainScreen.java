@@ -237,7 +237,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void jB_countersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_countersActionPerformed
         // TODO add your handling code here:
-        Counter counter = new Counter();
+        accounts counter = new accounts();
         counter.setVisible(true);
     }//GEN-LAST:event_jB_countersActionPerformed
 

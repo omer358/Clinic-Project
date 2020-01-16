@@ -7,6 +7,8 @@ package clinicproject.interfaces;
 
 import java.awt.Frame;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modles.DB;
 
 /**
  *
@@ -50,9 +52,9 @@ public class MeetDocter extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tf_diseaseSymptoms = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tv_decisions = new javax.swing.JTextField();
+        tv_dec = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jl_decsions = new javax.swing.JList();
+        jl_decs = new javax.swing.JList();
         jLabel8 = new javax.swing.JLabel();
         jb_save = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -89,7 +91,7 @@ public class MeetDocter extends javax.swing.JFrame {
 
         jLabel7.setText("decisions");
 
-        jScrollPane2.setViewportView(jl_decsions);
+        jScrollPane2.setViewportView(jl_decs);
 
         jLabel8.setText("Doctor Name:");
 
@@ -150,7 +152,7 @@ public class MeetDocter extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel7)
                                             .addGap(92, 92, 92)
-                                            .addComponent(tv_decisions, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tv_dec, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(tb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -191,7 +193,7 @@ public class MeetDocter extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel7)
-                                .addComponent(tv_decisions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tv_dec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(65, 65, 65)
@@ -217,8 +219,33 @@ public class MeetDocter extends javax.swing.JFrame {
 
     private void jb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_saveActionPerformed
         // TODO add your handling code here:
+        pPName = jt_pname.getText().trim();
         pSymptoms =tf_diseaseSymptoms.getText().trim();
         pDiagnose = ta_Diagnose.getText().trim();
+        pDecision = tv_dec.getText().trim();
+        //pDecisions =  jl_decs.getText().trim();
+        
+        String query = "INSERT INTO `result` ( `p_id`, `d_id`, `lab_test`, `lab_result`, `dr_decision`) VALUES (NULL, '', '', '', '', '');";
+        
+        DB add = new DB();
+        try{
+            int patient_no = 0;
+            int doctor_no = 0;
+            String table = "patient";
+            String fields = "`p_id`, `d_id`,`dr_decision`";
+            String values = "'" + patient_no + "','"+ doctor_no +"','"+  pDecision+"'";
+            if(add.insert(table, fields, values)== true){
+                JOptionPane.showMessageDialog(null,"Successfully added","result",JOptionPane.INFORMATION_MESSAGE);
+                jt_pname.setText(null);
+                jt_pAge.setText(null);
+                tf_diseaseSymptoms.setText(null);
+                ta_Diagnose.setText(null);
+                
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"there is an error while adding the records","Error",JOptionPane.INFORMATION_MESSAGE);
+        }
         
     }//GEN-LAST:event_jb_saveActionPerformed
 
@@ -276,12 +303,12 @@ public class MeetDocter extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jb_save;
-    private javax.swing.JList jl_decsions;
+    private javax.swing.JList jl_decs;
     private javax.swing.JTextField jt_pAge;
     private javax.swing.JTextField jt_pname;
     private javax.swing.JTextArea ta_Diagnose;
     private javax.swing.JButton tb_send;
     private javax.swing.JTextField tf_diseaseSymptoms;
-    private javax.swing.JTextField tv_decisions;
+    private javax.swing.JTextField tv_dec;
     // End of variables declaration//GEN-END:variables
 }

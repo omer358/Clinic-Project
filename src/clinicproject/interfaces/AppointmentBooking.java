@@ -7,6 +7,7 @@ package clinicproject.interfaces;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import modles.DB;
 
 /**
  *
@@ -26,6 +27,7 @@ public class AppointmentBooking extends javax.swing.JFrame {
      */
     public AppointmentBooking() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -158,15 +160,33 @@ public class AppointmentBooking extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-           String name = jt_pName.getText().toString().trim();
-       int age = Integer.parseInt(jt_pAge.getText().toString().trim());
-       String address = jt_pAddress.getText().toString().trim();
-       long  phone = Integer.parseInt(jt_pPhone.getText().toString().trim());
-       String gender = jc_gender.getSelectedItem().toString();
-       System.out.print("hello world");
-       System.out.println(gender);
-        JOptionPane.showMessageDialog(null,name+"\n"+age+"\n"+address+"\n"+phone+"\n"+gender,"result",JOptionPane.INFORMATION_MESSAGE);
-        this.setVisible(false);
+        String name    = jt_pName.getText().toString().trim();
+        int age        = Integer.parseInt(jt_pAge.getText().toString().trim());
+        String address = jt_pAddress.getText().toString().trim();
+        long  phone    = Integer.parseInt(jt_pPhone.getText().toString().trim());
+        String gender  = jc_gender.getSelectedItem().toString();
+        
+       /* System.out.print("hello world");
+        System.out.println(gender);
+        JOptionPane.showMessageDialog(null,name+"\n"+age+"\n"+address+"\n"+phone+"\n"+gender,"result",JOptionPane.INFORMATION_MESSAGE);*/
+        
+        DB add = new DB();
+        try{
+            String table = "result";
+            String fields = "`name`, `gender`, `age`, `phone_no`, `address`";
+            String values = "'" + name + "','"+ gender +"','"+  age+ "','"+ phone +"','"+ address +"'";
+            if(add.insert(table, fields, values)== true){
+                JOptionPane.showMessageDialog(null,"Successfully added","result",JOptionPane.INFORMATION_MESSAGE);
+                jt_pName.setText(null);
+                jt_pAge.setText(null);
+                jt_pAddress.setText(null);
+                jt_pPhone.setText(null);
+                
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"there is an error while adding the records","Error",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
