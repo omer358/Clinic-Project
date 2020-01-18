@@ -145,7 +145,7 @@ public class LoginScreen extends javax.swing.JFrame {
             
             while(rs.next()){
              
-              if(rs.getString("username").equals(userName) &&rs.getString("password").equals(password) ){
+              if(rs.getString("username").equals(userName) &&rs.getString("password").equals(password)){
                 ali = 1;
                 JOptionPane.showMessageDialog(null,"Welcome : "+rs.getString("name"), "you are loged in ", JOptionPane.INFORMATION_MESSAGE);    
                 MainScreen main = new MainScreen(rs.getString("username"));
@@ -153,6 +153,13 @@ public class LoginScreen extends javax.swing.JFrame {
                 main.setVisible(true);
                 
               }
+            }
+            if("doctor".equals(userName)&& "4321".equals(password)){
+                ali = 1;
+                JOptionPane.showMessageDialog(null,"Welcome : Doctor", "you are loged in ", JOptionPane.INFORMATION_MESSAGE);    
+                MainScreen main = new MainScreen("Doctor");
+                this.setVisible(false);
+                main.setVisible(true); 
             }
               
             if (ali == 0){

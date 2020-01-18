@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package clinicproject.interfaces;
+import java.sql.ResultSet;
+import modles.DB;
 
 import javax.swing.JFrame;
 
@@ -28,8 +30,23 @@ public class MainScreen extends javax.swing.JFrame {
         
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+        String name = null;
+        try {
+            DB user = new DB();
+            if("Doctor".equals(userName)){
+                name = "Doctor";
+            }
+            else{
+                ResultSet rs = user.get("SELECT * FROM `users` WHERE username = '"+userName+"'" );
+                while(rs.next()){
+                    name = rs.getString("name");
+                }  
+            }
+            
+        } catch (Exception e) {
+        }
         logenedUser = userName;
-        jlab_userName.setText(userName);
+        jlab_userName.setText(name);
         
     }
 
@@ -100,6 +117,11 @@ public class MainScreen extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_colorize_black_36dp.png"))); // NOI18N
         jButton1.setText("Lab");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -150,16 +172,27 @@ public class MainScreen extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/ic_filter_tilt_shift_black_36dp.png"))); // NOI18N
         jButton7.setText("Patient");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton7);
 
         jButton8.setFont(new java.awt.Font("Mashq-Bold", 0, 14)); // NOI18N
         jButton8.setText("Checking");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton8);
 
         jlab_userName.setFont(new java.awt.Font("Cantarell", 1, 14)); // NOI18N
         jlab_userName.setText("UserName");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clinicproject/icons/icons8-sign-out-24.png"))); // NOI18N
+        jButton2.setText("logout");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -189,7 +222,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlab_userName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlab_userName, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(23, 23, 23))
@@ -237,7 +270,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void jB_countersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_countersActionPerformed
         // TODO add your handling code here:
-        accounts counter = new accounts();
+        Acounts counter = new Acounts();
         counter.setVisible(true);
     }//GEN-LAST:event_jB_countersActionPerformed
 
@@ -255,16 +288,36 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void jB_meetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_meetingActionPerformed
         // TODO add your handling code here:
+        
         MeetDocter mDoctor = new MeetDocter();
         mDoctor.setVisible(true);
     }//GEN-LAST:event_jB_meetingActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
         this.setVisible(false);
         LoginScreen login = new LoginScreen();
         login.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        lab lab = new lab();
+        lab.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        PatientQuery view = new PatientQuery();
+        view.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        Statements state = new Statements();
+        state.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

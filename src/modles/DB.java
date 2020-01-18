@@ -70,8 +70,8 @@ public class DB {
     
     
     //editing method
-     public boolean edit(String table, String fields , String values){
-        String query = "UPDATE `student` SET `password` = '00070' WHERE `student`.`id` = 2;";
+     public boolean edit(String table, String fields , String where){
+        String query = "UPDATE `"+ table +"` SET "+fields+" WHERE `"+ table +"`."+where+";";
         return this.query(query);
      }
      

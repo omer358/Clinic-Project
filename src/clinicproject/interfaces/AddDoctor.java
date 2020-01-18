@@ -5,6 +5,7 @@
  */
 package clinicproject.interfaces;
 
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import modles.DB;
 
@@ -27,6 +28,21 @@ public class AddDoctor extends javax.swing.JFrame {
     public AddDoctor() {
         initComponents();
         this.setLocationRelativeTo(null);
+        fillcombo();
+    }
+    public void fillcombo(){
+        DB view = new DB();
+        ResultSet rs = view.get("SELECT * FROM `specification`");
+        try{
+           while(rs.next()){
+            String vals = rs.getString("s_name");
+            d_special.addItem(vals);
+        } 
+        }
+        catch(Exception ex){
+            
+        }
+        
     }
 
     /**
@@ -56,8 +72,6 @@ public class AddDoctor extends javax.swing.JFrame {
         setTitle("Add Doctor");
 
         jLabel1.setText("Doctor Name");
-
-        d_special.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Specialization");
 
@@ -161,13 +175,15 @@ public class AddDoctor extends javax.swing.JFrame {
         String address = d_address.getText().toString().trim();
         long  phone    = Integer.parseInt(d_phone.getText().toString().trim());
         String gender  = gen.getSelectedItem().toString();
+        String spi  = d_special.getSelectedItem().toString();
         
         String from = "INSERT INTO `doctors` (`id`, `name`, `age`, `gender`, `phone`, `adress`, `specification`, `date`) VALUES (NULL, '', '', '', '', '', '', current_timestamp());";
          DB add = new DB();
         try{
             String table = "doctors";
             String fields = "`name`, `age`, `gender`, `phone`, `adress`, `specification`";
-            String values = "'" + name + "','"+  age+"','"+  gender+ "','"+ phone +"','"+ address +"','empty'";
+            String values = "'" + name + "','"+  age+"','"+  gender+ "','"+ phone +"','"+ address +"','"+spi+"'";
+            
             if(add.insert(table, fields, values)== true){
                 JOptionPane.showMessageDialog(null,"Successfully added","result",JOptionPane.INFORMATION_MESSAGE);
                 d_name.setText(null);

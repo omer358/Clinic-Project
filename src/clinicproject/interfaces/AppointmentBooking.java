@@ -160,6 +160,7 @@ public class AppointmentBooking extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         String name    = jt_pName.getText().toString().trim();
         int age        = Integer.parseInt(jt_pAge.getText().toString().trim());
         String address = jt_pAddress.getText().toString().trim();
@@ -171,8 +172,11 @@ public class AppointmentBooking extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,name+"\n"+age+"\n"+address+"\n"+phone+"\n"+gender,"result",JOptionPane.INFORMATION_MESSAGE);*/
         
         DB add = new DB();
+        
+
         try{
-            String table = "result";
+            String table = "patient";
+            
             String fields = "`name`, `gender`, `age`, `phone_no`, `address`";
             String values = "'" + name + "','"+ gender +"','"+  age+ "','"+ phone +"','"+ address +"'";
             if(add.insert(table, fields, values)== true){
@@ -185,7 +189,7 @@ public class AppointmentBooking extends javax.swing.JFrame {
             }
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(null,"there is an error while adding the records","Error",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"there is an error while adding the records","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
